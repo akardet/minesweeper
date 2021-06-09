@@ -64,10 +64,10 @@ export function flagTile(tile) {
 
   if (tile.status === TILE_STATUS.FLAGGED) {
     tile.status = TILE_STATUS.HIDDEN
-    minesLeftText.textContent = ++minesLeft
+    if (minesLeftText) minesLeftText.textContent = ++minesLeft
   } else {
     tile.status = TILE_STATUS.FLAGGED
-    minesLeftText.textContent = --minesLeft
+    if (minesLeftText) minesLeftText.textContent = --minesLeft
   }
 }
 
