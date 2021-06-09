@@ -4,10 +4,24 @@
 
 body {
   margin: 0;
-  background-color: #333;
+  height: 100vh;
+  background-color: #ffad99;
+  background-image: radial-gradient(
+      at 95% 94%,
+      hsla(335, 98%, 79%, 1) 0,
+      transparent 44%
+    ),
+    radial-gradient(at 15% 0%, hsla(342, 96%, 62%, 1) 0, transparent 56%),
+    radial-gradient(at 35% 34%, hsla(302, 69%, 70%, 1) 0, transparent 41%),
+    radial-gradient(at 90% 97%, hsla(247, 97%, 69%, 1) 0, transparent 40%),
+    radial-gradient(at 52% 90%, hsla(18, 65%, 72%, 1) 0, transparent 41%),
+    radial-gradient(at 10% 7%, hsla(209, 82%, 77%, 1) 0, transparent 46%),
+    radial-gradient(at 90% 62%, hsla(280, 65%, 76%, 1) 0, transparent 56%);
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
   flex-direction: column;
   color: white;
 }
@@ -17,18 +31,52 @@ body {
 }
 
 .subtext {
-  color: #ccc;
+  color: white;
   font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 10px;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#reset-btn {
+  background: rgb(201, 140, 242);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 140, 242, 1) 0%,
+    rgba(255, 101, 214, 1) 100%
+  );
+  border: none;
+  display: flex;
+  align-items: center;
+  width: 90px;
+  border-radius: 30px;
+  justify-content: space-around;
+  color: white;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset {
+  width: 15px;
+  padding-bottom: 4px;
+  fill: white;
 }
 
 .board {
   display: inline-grid;
-  padding: 10px;
+  padding: 15px;
   grid-template-columns: repeat(var(--size), 50px);
   grid-template-rows: repeat(var(--size), 50px);
   gap: 4px;
-  background-color: #777;
+  background-color: rgba(256, 256, 256, 0.5);
+  border-radius: 10px;
 }
 
 .board > * {
@@ -38,23 +86,28 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  border: 2px solid #bbb;
+  border: 2px solid white;
   user-select: none;
+  font-size: 30px;
+  font-weight: 800;
 }
 
-.board > [data-status="hidden"] {
-  background-color: #bbb;
+.board > [data-status='hidden'] {
+  background-color: white;
+  opacity: 0.8;
   cursor: pointer;
 }
 
-.board > [data-status="mine"] {
-  background-color: red;
+.board > [data-status='mine'] {
+  background-image: url(/bomb.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.board > [data-status="number"] {
+.board > [data-status='number'] {
   background-color: none;
 }
 
-.board > [data-status="flagged"] {
+.board > [data-status='flagged'] {
   background-color: yellow;
 }

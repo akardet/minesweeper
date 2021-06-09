@@ -10,7 +10,41 @@
   </head>
   <body>
     <h3 class="title">Minesweeper</h3>
-    <div class="subtext">Mines Left: <span data-mines-count></span></div>
-    <div class="board"></div>
+    <div class="container">
+      <div class="data">
+        <div class="subtext">Mines Left: <span data-mines-count></span></div>
+        <button id="reset-btn" type="button">
+          Reset
+          <svg
+            viewBox="0 0 93 92"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="reset"
+          >
+            <title>Reset</title>
+            <g id="Page-1" stroke="none" stroke-width="1">
+              <g
+                id="arrow.uturn.backward"
+                transform="translate(-1403.000000, -1050.000000)"
+              >
+                <g id="Symbols" transform="translate(501.000000, 622.000000)">
+                  <g
+                    id="Regular-M"
+                    transform="translate(902.250000, 428.000000)"
+                  >
+                    <path
+                      d="M92.736,60.082 C92.736,41.4297 80.0898,28.5391 57.8242,28.5391 L25.0117,28.5391 L13.5859,29.0762 L22.8145,21.166 L36.9258,7.3965 C37.6582,6.6152 38.0977,5.6875 38.0977,4.418 C38.0977,1.8789 36.3887,0.1211 33.752,0.1211 C32.7266,0.1211 31.457,0.6582 30.627,1.4883 L1.916,29.6621 C0.9395,30.5898 0.4512,31.7129 0.4512,32.9336 C0.4512,34.1055 0.9395,35.2285 1.916,36.1562 L30.627,64.3301 C31.457,65.209 32.7266,65.6973 33.752,65.6973 C36.3887,65.6973 38.0977,63.9395 38.0977,61.4004 C38.0977,60.1309 37.6582,59.2031 36.9258,58.4219 L22.8145,44.7012 L13.5859,36.791 L25.0117,37.2793 L58.5566,37.2793 C75.207,37.2793 83.9961,46.459 83.9961,59.5938 C83.9961,72.77734 75.207,82.54297 58.5566,82.54297 L47.3262,82.54297 C44.6406,82.54297 42.8828,84.49609 42.8828,86.8887 C42.8828,89.2812 44.6406,91.2344 47.3262,91.2344 L58.6055,91.2344 C80.4316,91.2344 92.736,78.7832 92.736,60.082 Z"
+                      id="Path"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+      </div>
+      <div class="board"></div>
+    </div>
   </body>
 </html>

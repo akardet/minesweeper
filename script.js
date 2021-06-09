@@ -10,10 +10,12 @@ import {
 const BOARD_SIZE = 10
 const NUMBER_OF_MINES = 10
 
-const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES)
+let board = createBoard(BOARD_SIZE, NUMBER_OF_MINES)
 const boardElement = document.querySelector('.board')
 const minesLeftText = document.querySelector('[data-mines-count]')
 const messageText = document.querySelector('.subtext')
+const resetButton = document.querySelector('#reset-btn')
+resetButton.onclick = reset
 
 board.forEach((row) => {
   row.forEach((tile) => {
@@ -58,4 +60,8 @@ function checkGameEnd() {
 
 function stopProp(e) {
   e.stopImmediatePropagation()
+}
+
+function reset() {
+  location.reload()
 }
