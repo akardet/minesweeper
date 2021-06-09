@@ -1,24 +1,61 @@
-// Display/UI
-import { createBoard } from "./minesweeper.js";
+import {
+  revealTile,
+  createBoard,
+  flagTile,
+  checkWin,
+  checkLose,
+  TILE_STATUS,
+} from './minesweeper.js'
 
-const BOARD_SIZE = 10;
-const NUMBER_OF_MINES = 10;
+const BOARD_SIZE = 10
+const NUMBER_OF_MINES = 10
 
-const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES);
-const boardElement = document.querySelector(".board");
+const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES)
+const boardElement = document.querySelector('.board')
+const minesLeftText = document.querySelector('[data-mines-count]')
+const messageText = document.querySelector('.subtext')
 
 board.forEach((row) => {
   row.forEach((tile) => {
-    boardElement.append(tile.element);
-  });
-});
+    boardElement.append(tile.element)
+    tile.element.addEventListener('click', () => {
+      revealTile(board, tile)
+      checkGameEnd()
+    })
+    tile.element.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+      flagTile(tile)
+    })
+  })
+})
 
-boardElement.style.setProperty("--size", BOARD_SIZE);
+boardElement.style.setProperty('--size', BOARD_SIZE)
+minesLeftText.textContent = NUMBER_OF_MINES
 
-//1. Populate a board with tiles/mines
+function checkGameEnd() {
+  const win = checkWin(board)
+  const lose = checkLose(board)
 
-//2. Left click on tiles
-//  a. Reveal tiles
-//3. Right click on tiles
-//  a. Flag tiles
-//4. Check for win/lose
+  if (win || lose) {
+    boardElement.addEventListener('click', stopProp, { capture: true })
+    boardElement.addEventListener('contextmenu', stopProp, { capture: true })
+  }
+
+  if (win) {
+    messageText.textContent = 'You Win'
+  }
+
+  if (lose) {
+    messageText.textContent = 'You Lose'
+    board.forEach((row) => {
+      row.forEach((tile) => {
+        if (tile.status === TILE_STATUS.FLAGGED) flagTile(tile)
+        if (tile.mine) revealTile(board, tile)
+      })
+    })
+  }
+}
+
+function stopProp(e) {
+  e.stopImmediatePropagation()
+}
